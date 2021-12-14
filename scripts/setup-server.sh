@@ -7,9 +7,9 @@ set -e
 # install add-ons
 install_package() {
 	if ! hash "$1" 2>/dev/null; then
-    	echo "Installing $1..."
-        #sudo apt update
-		#sudo apt -qy install "$1"
+    echo "Installing $1..."
+    sudo apt update
+    sudo apt -qy install "$1"
 	fi
 }
 
@@ -49,7 +49,7 @@ echo "Attempting to download: $url"
 rm -f "$zipfile"
 wget -nv --show-progress $url
 
-echo "Unpacking node files..."
+echo "Unpacking sniper..."
 unzip "$zipfile"
 sudo mv "$filename" /usr/local/bin/sniper
 rm -f "$zipfile"
